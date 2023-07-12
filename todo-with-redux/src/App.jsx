@@ -6,9 +6,11 @@ const App = () => {
   const todoList = useSelector((state) => state.todoReducer)
   const [todo, setTodo] = useState('')
   const dispatch = useDispatch()
-  const Watch = () => {
-    console.log("wacthcing", todo)
+  const todoAddKrdo = () => {
+    dispatch(AddTodo(todo))
+    setTodo("")
   }
+
   return (
     <div className='App'>
       <h3>Todo App</h3>
@@ -23,7 +25,8 @@ const App = () => {
 
         <button
           onClick={() => {
-            dispatch(AddTodo(todo))
+            todoAddKrdo()
+
 
           }}
           className='btn-add'>+</button>
@@ -42,7 +45,7 @@ const App = () => {
 
         }
       </div>
-      <div onClick={() => dispatch(DelAll())} className='clr-all'>
+      <div  onClick={() => dispatch(DelAll())} className='clr-all'>
         Clear All
       </div>
     </div>
